@@ -120,6 +120,37 @@
   .proj li::marker{ color: var(--green); }
   .proj .links{ margin-top: 10px; font-size: 13px; }
 
+  .out{
+    margin-top: 12px;
+    background: #070a07;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    overflow-x: auto;
+    white-space: pre;
+    color: #6f8a72;
+  }
+  .out .hl{ color: var(--green-bright); }
+  .out .cmd{ color: var(--text); }
+  .out .warn{ color: var(--amber); }
+
+  .shot{
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #070a07;
+  }
+  .shot img{ display:block; width:100%; height:auto; }
+  .shot figcaption{
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--line);
+  }
+
   .cert-row{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px; padding-bottom:10px; border-bottom:1px dashed var(--line); }
   .cert-row:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
   .cert-name{ color: var(--text); }
@@ -201,6 +232,28 @@
           <li>Mapped lab coverage in MITRE ATT&CK Navigator to see what the detections actually cover and where the gaps are.</li>
           <li>Currently looking at Security Onion as the next step, to wire it into the existing rule set.</li>
         </ul>
+        <div class="out"><span class="cmd">$ python ssh_bruteforce_detector.py logs/linux_auth.log</span>
+<span class="hl">=== SSH ANALYSIS RESULTS ===</span>
+Failed login attempts: 408
+Unique attacking IPs: 4
+Successful logins: 79
+
+<span class="warn">[!] Top 10 brute force sources:</span>
+  192.168.1.100            attempts=114 users=[oracle, postgres, admin]
+  218.188.2.4              attempts=97  users=[root]
+  220.135.151.1.hinet.net  attempts=88  users=[root]
+
+<span class="hl">Successful logins after failures:</span>
+  root@203.0.113.5
+  postgres@172.16.0.55</div>
+        <figure class="shot">
+          <img src="assets/apache-analysis.png" alt="Terminal output of the Apache log analyzer showing 1916 requests analyzed, 21 unique IPs, and detected XSS, path traversal, and shell upload attempts" loading="lazy">
+          <figcaption>apache_analyzer.py run against a synthetic access log — detects SQLi/XSS/path traversal/shell-upload patterns</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/setup-complete.png" alt="Terminal output showing the cross-platform SOC lab setup script completing successfully, with all packages installed and a Python virtual environment created" loading="lazy">
+          <figcaption>setup_soc_lab.py completing a full environment build — venv, dependencies, sample datasets, all in one run</figcaption>
+        </figure>
         <div class="links"><a href="https://github.com/kingswr1d" target="_blank" rel="noopener">→ view on GitHub</a></div>
       </div>
 
