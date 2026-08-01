@@ -265,6 +265,271 @@ Successful logins: 79
           <li><strong>Blue Team Introduction</strong> — defensive security and incident handling.</li>
           <li><strong>What is Networking?</strong> — protocols, packet analysis, network-based attack vectors.</li>
         </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kingswr1d :: Cyber Security Analyst Portfolio</title>
+<meta name="description" content="Lesabe Ntshingila — Cyber Security Analyst with a networking background. Home lab, detection engineering, log analysis.">
+<style>
+  :root{
+    --bg: #0a0d0a;
+    --bg-panel: #0e130e;
+    --line: #1b241b;
+    --text: #a9c2a9;
+    --text-dim: #56695a;
+    --green: #3ddc5a;
+    --green-bright: #79ffa6;
+    --amber: #d4a72c;
+    --red: #d4553c;
+    --mono: "JetBrains Mono", "Fira Code", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--mono);
+    font-size:15px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  canvas#rain{
+    position:fixed; inset:0; width:100%; height:100%;
+    z-index:0; opacity:0.16; pointer-events:none;
+  }
+
+  a { color: var(--green-bright); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover, a:focus-visible { border-bottom-color: var(--green-bright); }
+  a:focus-visible, button:focus-visible { outline: 1px solid var(--green-bright); outline-offset: 3px; }
+
+  .wrap{
+    position:relative; z-index:1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 20px 100px;
+  }
+
+  .win{
+    border:1px solid var(--line);
+    background: rgba(14,19,14,0.86);
+    backdrop-filter: blur(2px);
+    border-radius: 6px;
+    overflow:hidden;
+  }
+
+  .win + .win{ margin-top: 22px; }
+
+  .win-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:9px 12px;
+    background: #0c110c;
+    border-bottom:1px solid var(--line);
+    font-size:12px;
+    color: var(--text-dim);
+  }
+  .dot{ width:9px; height:9px; border-radius:50%; background:#26301f; border:1px solid var(--line); }
+  .win-title{ margin-left:6px; }
+
+  .win-body{ padding: 20px 22px 24px; }
+
+  .prompt{
+    color: var(--text-dim);
+    font-size: 13px;
+    margin: 0 0 10px;
+  }
+  .prompt .user{ color: var(--green); }
+  .prompt .path{ color: var(--text); }
+
+  h1{
+    font-size: clamp(22px, 5vw, 30px);
+    margin: 0 0 6px;
+    color: var(--green-bright);
+    letter-spacing: 0.5px;
+  }
+  .role{ color: var(--text); margin: 0 0 18px; font-size: 15px; }
+  .role .cursor{ display:inline-block; width:8px; background:var(--green-bright); margin-left:2px; animation: blink 1.05s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .meta{ display:flex; flex-wrap:wrap; gap: 4px 16px; font-size: 13px; color: var(--text-dim); margin-top: 14px; }
+  .meta a{ color: var(--text-dim); }
+  .meta a:hover{ color: var(--green-bright); }
+
+  h2{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin: 0 0 16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  h2::after{ content:""; flex:1; height:1px; background:var(--line); }
+  h2 .tag{ color: var(--green); }
+
+  p{ margin: 0 0 12px; }
+
+  .skills{ display:grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 6px 18px; list-style:none; padding:0; margin:0; }
+  .skills li{ font-size: 14px; }
+  .skills li::before{ content:"> "; color: var(--green); }
+
+  .proj{ border-left: 2px solid var(--line); padding: 2px 0 2px 16px; margin-bottom: 24px; }
+  .proj:last-child{ margin-bottom:0; }
+  .proj h3{ margin:0 0 4px; font-size:16px; color: var(--text); }
+  .proj .sub{ font-size:12.5px; color: var(--text-dim); margin-bottom:10px; }
+  .proj ul{ margin:0; padding-left: 18px; }
+  .proj li{ margin-bottom: 6px; font-size: 14px; }
+  .proj li::marker{ color: var(--green); }
+  .proj .links{ margin-top: 10px; font-size: 13px; }
+
+  .out{
+    margin-top: 12px;
+    background: #070a07;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    overflow-x: auto;
+    white-space: pre;
+    color: #6f8a72;
+  }
+  .out .hl{ color: var(--green-bright); }
+  .out .cmd{ color: var(--text); }
+  .out .warn{ color: var(--amber); }
+
+  .shot{
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #070a07;
+  }
+  .shot img{ display:block; width:100%; height:auto; }
+  .shot figcaption{
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--line);
+  }
+
+  .cert-row{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px; padding-bottom:10px; border-bottom:1px dashed var(--line); }
+  .cert-row:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .cert-name{ color: var(--text); }
+  .status{ font-size:12px; padding: 2px 8px; border-radius:3px; white-space:nowrap; }
+  .status.pending{ color: var(--amber); border:1px solid #4a3d1a; background:#1a160a; }
+  .status.done{ color: var(--green-bright); border:1px solid #1f3d27; background:#0e1a12; }
+
+  .paths{ font-size:14px; }
+  .paths .p{ margin-bottom: 4px; }
+  .paths .p::before{ content:"[x] "; color: var(--green); }
+
+  footer{
+    margin-top: 28px;
+    text-align:center;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  ::selection{ background: #1f3d27; color: var(--green-bright); }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .role .cursor{ animation:none; }
+    canvas#rain{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="rain" aria-hidden="true"></canvas>
+
+<div class="wrap">
+
+  <div class="win">
+    <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win-title">guest@kingswr1d: ~</span></div>
+    <div class="win-body">
+      <p class="prompt"><span class="user">guest@kingswr1d</span>:<span class="path">~</span>$ whoami</p>
+      <h1>Lesabe Ntshingila</h1>
+      <p class="role">Cyber Security Analyst | Networking &amp; SOC Operations<span class="cursor" aria-hidden="true"></span></p>
+      <p>Self-taught in security ops — I build my own lab, break it, log what happened, and fix the detection. Based in Durban, open to relocating. Comfortable working odd hours; 24/7 SOC shifts don't scare me.</p>
+      <div class="meta">
+        <a href="https://github.com/kingswr1d" target="_blank" rel="noopener">github.com/kingswr1d</a>
+        <a href="https://www.linkedin.com/in/kgosi-ntshingila-01a427359" target="_blank" rel="noopener">linkedin.com/in/kgosi-ntshingila</a>
+        <span>Durban, South Africa</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="win">
+    <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win-title">cat skills.txt</span></div>
+    <div class="win-body">
+      <h2><span class="tag">$</span> core competencies</h2>
+      <ul class="skills">
+        <li>SIEM monitoring</li>
+        <li>EDR tools</li>
+        <li>Threat detection</li>
+        <li>Firewall / IDS / IPS</li>
+        <li>Incident response</li>
+        <li>Log analysis</li>
+        <li>Threat intelligence</li>
+        <li>Network security</li>
+        <li>Vulnerability management</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="win">
+    <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win-title">ls -la ./projects</span></div>
+    <div class="win-body">
+      <h2><span class="tag">$</span> project</h2>
+
+      <div class="proj">
+        <h3>soc-lab</h3>
+        <div class="sub">Personal SOC home lab — self-initiated · cross-platform, runs on any OS</div>
+        <p>No spare server, no lab rig — just a setup script, some persistence, and a lot of trial and error. Designed to run on any OS.</p>
+        <ul>
+          <li>Wrote Python detection scripts: an Apache log analyzer, an SSH brute-force detector, a packet inspector, and a log generator for testing them against.</li>
+          <li>Built Sigma rules covering MITRE ATT&CK techniques T1059.001, T1003.001, and T1053.005, validated against Atomic Red Team.</li>
+          <li>Mapped lab coverage in MITRE ATT&CK Navigator to see what the detections actually cover and where the gaps are.</li>
+          <li>Running an active SIEM home lab built on Wazuh (deployed in a VM) — log collection, alerting, and ongoing detection engineering practice.</li>
+        </ul>
+        <div class="out"><span class="cmd">$ python ssh_bruteforce_detector.py logs/linux_auth.log</span>
+<span class="hl">=== SSH ANALYSIS RESULTS ===</span>
+Failed login attempts: 408
+Unique attacking IPs: 4
+Successful logins: 79
+
+<span class="warn">[!] Top 10 brute force sources:</span>
+  192.168.1.100            attempts=114 users=[oracle, postgres, admin]
+  218.188.2.4              attempts=97  users=[root]
+  220.135.151.1.hinet.net  attempts=88  users=[root]
+
+<span class="hl">Successful logins after failures:</span>
+  root@203.0.113.5
+  postgres@172.16.0.55</div>
+        <figure class="shot">
+          <img src="assets/apache-analysis.png" alt="Terminal output of the Apache log analyzer showing 1916 requests analyzed, 21 unique IPs, and detected XSS, path traversal, and shell upload attempts" loading="lazy">
+          <figcaption>apache_analyzer.py run against a synthetic access log — detects SQLi/XSS/path traversal/shell-upload patterns</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/setup-complete.png" alt="Terminal output showing the cross-platform SOC lab setup script completing successfully, with all packages installed and a Python virtual environment created" loading="lazy">
+          <figcaption>setup_soc_lab.py completing a full environment build — venv, dependencies, sample datasets, all in one run</figcaption>
+        </figure>
+        <div class="links"><a href="https://github.com/kingswr1d/soc-lab" target="_blank" rel="noopener">→ view on GitHub</a></div>
+      </div>
+
+      <div class="proj">
+        <h3>Live SOC Monitoring — LetsDefend</h3>
+        <div class="sub">HackTheBox (LetsDefend) SOC analyst learning path</div>
+        <ul>
+          <li>Monitored real-time security alerts, performed triage, and investigated incidents in a simulated SOC environment.</li>
+        </ul>
       </div>
 
     </div>
@@ -274,19 +539,30 @@ Successful logins: 79
     <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win-title">cat certifications.log</span></div>
     <div class="win-body">
       <h2><span class="tag">$</span> certifications</h2>
+
       <div class="cert-row">
         <span class="cert-name">ISC2 Certified in Cybersecurity (CC)</span>
-        <span class="status pending">exam scheduled</span>
+        <span class="status done">completed</span>
       </div>
-      <p style="margin-top:2px; font-size:13px; color:var(--text-dim);">International Information System Security Certification Consortium (ISC2)</p>
-    </div>
-  </div>
+      <div class="cert-row">
+        <span class="cert-name">ISC2 Webinar (CPE) — Securing SaaS at Scale</span>
+        <span class="status done">jul 2026</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">HackTheBox (LetsDefend) — SOC analyst learning path</span>
+        <span class="status done">in progress</span>
+      </div>
+      <div class="cert-row">
+        <span class="cert-name">CompTIA Security+ · AWS Cloud Practitioner</span>
+        <span class="status pending">pursuing</span>
+      </div>
 
-  <div class="win">
-    <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="win-title">cat education.txt</span></div>
-    <div class="win-body">
-      <h2><span class="tag">$</span> education</h2>
-      <p><strong>Self-directed cybersecurity education</strong> — structured online platforms, industry certifications, and hands-on lab work, working toward further security qualifications.</p>
+      <p style="margin-top:16px;">TryHackMe — completed learning paths:</p>
+      <div class="paths">
+        <div class="p">SOC Fundamentals</div>
+        <div class="p">Blue Team Introduction</div>
+        <div class="p">What is Networking?</div>
+      </div>
     </div>
   </div>
 
