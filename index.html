@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>kingswr1d :: Cyber Security Analyst Portfolio</title>
-<meta name="description" content="Lesabe Ntshingila — Cyber Security Analyst with a networking background. Home lab, detection engineering, log analysis.">
+<meta name="description" content="Lesabe Kgosi Ntshingila — Cyber Security Analyst with a networking background. Home lab, detection engineering, log analysis.">
 <style>
   :root{
     --bg: #0a0d0a;
@@ -190,10 +190,10 @@
       <p class="prompt"><span class="user">guest@kingswr1d</span>:<span class="path">~</span>$ whoami</p>
       <h1>Lesabe Ntshingila</h1>
       <p class="role">Cyber Security Analyst | Networking &amp; SOC Operations<span class="cursor" aria-hidden="true"></span></p>
-      <p>Self-taught in security ops — I build my own lab, break it, log what happened, and fix the detection. Based in Durban, open to relocating. Comfortable working odd hours.</p>
+      <p>Self-taught in security ops — I build my own lab, break it, log what happened, and fix the detection. Based in Durban, open to relocating. Comfortable with rotating shifts, including nights and weekends.</p>
       <div class="meta">
         <a href="https://github.com/kingswr1d" target="_blank" rel="noopener">github.com/kingswr1d</a>
-        <a href="https://www.linkedin.com/in/kgosi-ntshingila-01a427359" target="_blank" rel="noopener">linkedin.com/in/kgosi-ntshingila</a>
+        <a href="https://www.linkedin.com/in/kgosi-ntshingila-01a427359" target="_blank" rel="noopener">linkedin.com/in/kgosi-ntshingila-01a427359</a>
         <span>Durban, South Africa</span>
       </div>
     </div>
@@ -224,13 +224,12 @@
 
       <div class="proj">
         <h3>soc-lab</h3>
-        <div class="sub">Personal SOC home lab — self-initiated · cross-platform, runs on any OS</div>
+        <div class="sub">Personal SOC home lab — self-initiated · in active development since 2026 · cross-platform, runs on any OS</div>
         <p>No spare server, no lab rig — just a setup script, some persistence, and a lot of trial and error. Designed to run on any OS.</p>
         <ul>
           <li>Wrote Python detection scripts: an Apache log analyzer, an SSH brute-force detector, a packet inspector, and a log generator for testing them against.</li>
           <li>Built Sigma rules covering MITRE ATT&CK techniques T1059.001, T1003.001, and T1053.005, validated against Atomic Red Team.</li>
           <li>Mapped lab coverage in MITRE ATT&CK Navigator to see what the detections actually cover and where the gaps are.</li>
-          <li>Running an active SIEM home lab built on Wazuh (deployed in a VM) — log collection, alerting, and ongoing detection engineering practice.</li>
         </ul>
         <div class="out"><span class="cmd">$ python ssh_bruteforce_detector.py logs/linux_auth.log</span>
 <span class="hl">=== SSH ANALYSIS RESULTS ===</span>
@@ -258,11 +257,40 @@ Successful logins: 79
       </div>
 
       <div class="proj">
+        <h3>Active SIEM Lab — Wazuh</h3>
+        <div class="sub">Personal lab, deployed in a VM · not part of the soc-lab repo above</div>
+        <ul>
+          <li>Running an active SIEM home lab built on Wazuh, used for log collection, alerting, and ongoing detection engineering practice.</li>
+        </ul>
+        <figure class="shot">
+          <img src="assets/wazuh-overview.jpg" alt="Wazuh dashboard overview showing 4 active agents, 24-hour alert severity breakdown, endpoint security, and threat intelligence modules" loading="lazy">
+          <figcaption>Wazuh dashboard overview — agent status, alert severity breakdown, and available detection modules</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/wazuh-endpoints.jpg" alt="Wazuh endpoints view showing 4 active agents across Windows 10 and Windows 11 machines, all connected and reporting" loading="lazy">
+          <figcaption>Wazuh endpoints view — agents deployed and reporting across the lab</figcaption>
+        </figure>
+      </div>
+
+      <div class="proj">
         <h3>Live SOC Monitoring — LetsDefend</h3>
         <div class="sub">HackTheBox (LetsDefend) SOC analyst learning path</div>
         <ul>
           <li>Monitored real-time security alerts, performed triage, and investigated incidents in a simulated SOC environment.</li>
+          <li>Investigated a phishing email in the Email Security module — read headers and body content, identified a password-protected malicious archive lure, and confirmed the block action.</li>
         </ul>
+        <figure class="shot">
+          <img src="assets/letsdefend-main-channel.jpg" alt="LetsDefend main alert channel showing a queue of security alerts by severity, including critical SharePoint and malware detections" loading="lazy">
+          <figcaption>LetsDefend main channel — live alert queue, triaged by severity</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/letsdefend-investigation-alert.jpg" alt="LetsDefend investigation channel showing a critical alert for CVE-2025-53770 SharePoint ToolShell authentication bypass and remote code execution" loading="lazy">
+          <figcaption>Investigating a critical SharePoint ToolShell (CVE-2025-53770) auth bypass and RCE alert</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/letsdefend-phishing-analysis.jpg" alt="LetsDefend Email Security module showing a phishing email with a password-protected archive lure, flagged and allowed for investigation" loading="lazy">
+          <figcaption>Phishing email investigation — identifying a malicious password-protected archive lure</figcaption>
+        </figure>
       </div>
 
     </div>
@@ -274,7 +302,7 @@ Successful logins: 79
       <h2><span class="tag">$</span> certifications</h2>
 
       <div class="cert-row">
-        <span class="cert-name">ISC2 Certified in Cybersecurity (CC)</span>
+        <span class="cert-name">ISC2 Certified in Cybersecurity (CC) <span style="color:var(--text-dim); font-weight:normal;">— Candidate ID 3986078</span></span>
         <span class="status done">completed</span>
       </div>
       <div class="cert-row">
@@ -282,15 +310,15 @@ Successful logins: 79
         <span class="status done">jul 2026</span>
       </div>
       <div class="cert-row">
-        <span class="cert-name">HackTheBox (LetsDefend) — SOC analyst learning path</span>
-        <span class="status done">in progress</span>
+        <span class="cert-name">HackTheBox (LetsDefend) — SOC analyst learning path <a href="https://profile.hackthebox.com/profile/019eaa69-c76d-70ee-9084-8484ad45f3ad" target="_blank" rel="noopener" style="font-size:12px;">[profile]</a></span>
+        <span class="status pending">in progress</span>
       </div>
       <div class="cert-row">
         <span class="cert-name">CompTIA Security+ · AWS Cloud Practitioner</span>
         <span class="status pending">pursuing</span>
       </div>
 
-      <p style="margin-top:16px;">TryHackMe — completed learning paths:</p>
+      <p style="margin-top:16px;">TryHackMe — <a href="https://tryhackme.com/p/kinglesabe" target="_blank" rel="noopener">tryhackme.com/p/kinglesabe</a> — completed learning paths:</p>
       <div class="paths">
         <div class="p">SOC Fundamentals</div>
         <div class="p">Blue Team Introduction</div>
@@ -322,7 +350,7 @@ Successful logins: 79
   var canvas = document.getElementById('rain');
   var ctx = canvas.getContext('2d');
   var w, h, cols, drops;
-  var chars = "01010101010101";
+  var chars = "01アイウエオカキクケコサシスセソナニヌネノ";
 
   function resize(){
     w = canvas.width = window.innerWidth;
